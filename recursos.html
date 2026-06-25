@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recursos</title>
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: #edf3ee;
+}
+
+/* MENU */
+
+header{
+    padding: 25px 60px;
+}
+
+nav{
+    background: white;
+    border-radius: 20px;
+    padding: 20px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 38px;
+    font-weight: bold;
+    color: #1fa34a;
+}
+
+.menu{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #1e2d3d;
+    font-weight: bold;
+}
+
+/* TITULO */
+
+.topo{
+    text-align: center;
+    padding: 70px 20px 40px;
+}
+
+.badge{
+    display: inline-block;
+    background: white;
+    color: #1fa34a;
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.topo h1{
+    font-size: 60px;
+    color: #1e2d3d;
+}
+
+.topo span{
+    color: #1fa34a;
+}
+
+/* RECURSOS */
+
+.recursos{
+    padding: 40px 60px 80px;
+
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card{
+    background: white;
+    width: 320px;
+    padding: 35px;
+    border-radius: 25px;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.card h2{
+    color: #1fa34a;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.card p{
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card button{
+    border: none;
+    background: #1fa34a;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 900px){
+
+    nav{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menu{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .topo h1{
+        font-size: 40px;
+    }
+
+}
+.badge{font-size: 52px;}
+
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+}
+
+.popup-conteudo{
+    background:white;
+    width:650px;
+    max-width:90%;
+    padding:35px;
+    border-radius:20px;
+    position:relative;
+}
+
+.popup-conteudo h2{
+    color:#1fa34a;
+    margin-bottom:20px;
+}
+
+.popup-conteudo p{
+    color:#444;
+    line-height:1.8;
+}
+
+.fechar{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:35px;
+    cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+RECURSOS
+</div>
+
+<ul class="menu">
+<li><a href="index.html">Início</a></li>
+
+<li><a href="plataformas.html">Plataformas</a></li>
+<li><a href="planos.html">Planos</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="topo">
+
+<h1>
+Recursos para <span>automatizar</span><br>
+e aumentar suas vendas
+</h1>
+<div class="badge">
+Quais são os recursos do nosso site?
+</div>
+
+</section>
+
+<section class="recursos">
+
+<div class="card">
+
+<h2>📊 Dashboard</h2>
+
+<p>
+Acompanhe suas vendas, clientes e resultados em tempo real com gráficos modernos e relatórios inteligentes.
+</p>
+
+<button onclick="abrirPopup('dashboard')">Saiba Mais</button>
+
+</div>
+
+<div class="card">
+
+<h2>🤖 Automação</h2>
+
+<p>
+Automatize mensagens, pagamentos e processos do seu negócio para ganhar mais tempo e produtividade.
+</p>
+
+<button onclick="abrirPopup('automacao')">Saiba Mais</button>
+
+</div>
+
+<div class="card">
+
+<h2>🛒 HUB de Vendas</h2>
+
+<p>
+Integre diferentes plataformas e controle todos os seus pedidos em apenas um único painel.
+</p>
+
+<button onclick="abrirPopup('hub')">Saiba Mais</button>
+
+</div>
+
+<div class="card">
+
+<h2>📱 Responsivo</h2>
+
+<p>
+Seu sistema funciona perfeitamente em celular, tablet e computador com design moderno e rápido.
+</p>
+
+<button onclick="abrirPopup('responsivo')">Saiba Mais</button>
+
+</div>
+
+<div class="card">
+
+<h2>🔒 Segurança</h2>
+
+<p>
+Proteção avançada para seus dados e informações com tecnologia segura e backups automáticos.
+</p>
+
+<button onclick="abrirPopup('seguranca')">Saiba Mais</button>
+
+</div>
+
+<div class="card">
+
+<h2>💬 Suporte</h2>
+
+<p>
+Equipe disponível para ajudar você sempre que precisar com atendimento rápido e eficiente.
+</p>
+
+<button onclick="abrirPopup('suporte')">Saiba Mais</button>
+
+</div>
+
+</section>
+<div id="popup" class="popup">
+
+    <div class="popup-conteudo">
+
+        <span class="fechar" onclick="fecharPopup()">&times;</span>
+
+        <h2 id="titulo"></h2>
+
+        <p id="texto"></p>
+
+    </div>
+
+</div>
+
+<script>
+
+function abrirPopup(tipo){
+
+    let titulo = document.getElementById("titulo");
+    let texto = document.getElementById("texto");
+
+    if(tipo=="dashboard"){
+
+        titulo.innerHTML="📊 Dashboard";
+
+        texto.innerHTML="Tenha controle total do seu negócio em um único lugar. O Dashboard reúne vendas, faturamento, clientes, pedidos e resultados em tempo real. Com gráficos modernos e relatórios inteligentes você acompanha o desempenho da empresa e toma decisões com muito mais segurança.";
+
+    }
+
+    if(tipo=="automacao"){
+
+        titulo.innerHTML="🤖 Automação";
+
+        texto.innerHTML="Automatize tarefas repetitivas como envio de mensagens, emissão de pedidos, pagamentos e notificações. Assim você economiza tempo, reduz erros e pode focar no crescimento do seu negócio.";
+
+    }
+
+    if(tipo=="hub"){
+
+        titulo.innerHTML="🛒 HUB de Vendas";
+
+        texto.innerHTML="Conecte diferentes plataformas de venda em um único sistema. Gerencie pedidos, estoque, clientes e vendas sem precisar acessar vários sites diferentes.";
+
+    }
+
+    if(tipo=="responsivo"){
+
+        titulo.innerHTML="📱 Responsivo";
+
+        texto.innerHTML="Nosso sistema se adapta automaticamente ao tamanho da tela. Funciona perfeitamente em celulares, tablets, notebooks e computadores, proporcionando uma excelente experiência ao usuário.";
+
+    }
+
+    if(tipo=="seguranca"){
+
+        titulo.innerHTML="🔒 Segurança";
+
+        texto.innerHTML="Protegemos seus dados com tecnologias modernas, criptografia, backups automáticos e monitoramento constante para garantir a segurança das informações da sua empresa.";
+
+    }
+
+    if(tipo=="suporte"){
+
+        titulo.innerHTML="💬 Suporte";
+
+        texto.innerHTML="Nossa equipe está pronta para ajudar sempre que você precisar. Conte com atendimento rápido, suporte técnico especializado e acompanhamento para resolver dúvidas e problemas.";
+
+    }
+
+    document.getElementById("popup").style.display="flex";
+}
+
+function fecharPopup(){
+    document.getElementById("popup").style.display="none";
+}
+
+window.onclick=function(event){
+
+    let popup=document.getElementById("popup");
+
+    if(event.target==popup){
+        fecharPopup();
+    }
+
+}
+
+</script>
+</body>
+</html>

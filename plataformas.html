@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plataformas Aceitas</title>
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: #edf3ee;
+}
+
+/* MENU */
+
+header{
+    padding: 25px 60px;
+}
+
+nav{
+    background: white;
+    border-radius: 20px;
+    padding: 20px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 35px;
+    font-weight: bold;
+    color: #1fa34a;
+}
+
+.menu{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #1e2d3d;
+    font-weight: bold;
+}
+
+/* TOPO */
+
+.topo{
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.badge{
+    display: inline-block;
+    background: white;
+    color: #1fa34a;
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.topo h1{
+    font-size: 60px;
+    color: #1e2d3d;
+}
+
+.topo span{
+    color: #1fa34a;
+}
+
+.topo p{
+    margin-top: 20px;
+    color: #555;
+    font-size: 20px;
+}
+
+/* PLATAFORMAS */
+
+.plataformas{
+    padding: 40px 60px 80px;
+
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card{
+    background: white;
+    width: 300px;
+    padding: 35px;
+    border-radius: 25px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.icone{
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.card h2{
+    color: #1fa34a;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.card p{
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.card button{
+    border: none;
+    background: #1fa34a;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 900px){
+
+    nav{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menu{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .topo h1{
+        font-size: 42px;
+    }
+
+}
+/* POPUP */
+
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.popup-conteudo{
+    background:#fff;
+    width:350px;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    position:relative;
+    animation:popup .3s;
+}
+
+.popup-conteudo img{
+    width:220px;
+    margin:20px 0;
+}
+
+.popup-conteudo h2{
+    color:#1fa34a;
+}
+
+.popup-conteudo p{
+    color:#555;
+}
+
+.fechar{
+    position:absolute;
+    top:10px;
+    right:18px;
+    font-size:35px;
+    cursor:pointer;
+}
+
+.fechar:hover{
+    color:red;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+PLATAFORMAS
+</div>
+
+<ul class="menu">
+<li><a href="index.html">Início</a></li>
+<li><a href="recursos.html">Recursos</a></li>
+<li><a href="planos.html">Planos</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="topo">
+
+<div class="badge">
+Plataformas aceitas no sistema
+</div>
+
+<h1>
+Venda em várias <span>plataformas</span><br>
+ao mesmo tempo
+</h1>
+
+<p>
+Integre sua loja com marketplaces, redes sociais e sistemas de pagamento.
+</p>
+
+</section>
+
+<section class="plataformas">
+
+<div class="card">
+
+<div class="icone">🛒</div>
+
+<h2>Shopify</h2>
+
+<p>
+Integre sua loja Shopify e controle pedidos, clientes e vendas em um só painel.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="icone">📦</div>
+
+<h2>Mercado Livre</h2>
+
+<p>
+Gerencie anúncios, estoque e entregas automaticamente pelo sistema.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="icone">📱</div>
+
+<h2>Instagram</h2>
+
+<p>
+Venda pelas redes sociais e acompanhe mensagens e pedidos facilmente.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="icone">💳</div>
+
+<h2>Pix</h2>
+
+<p>
+Receba pagamentos instantâneos com integração rápida e segura.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+</div>
+
+<div class="card">
+
+<div class="icone">💰</div>
+
+<h2>PayPal</h2>
+
+<p>
+Aceite pagamentos online nacionais e internacionais com segurança.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+<div class="card">
+
+<div class="icone">🏪</div>
+
+<h2>Shopee</h2>
+
+<p>
+Controle suas vendas da Shopee diretamente pelo sistema da plataforma.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+</section>
+<!-- POPUP -->
+
+<div id="popupQR" class="popup">
+
+    <div class="popup-conteudo">
+
+        <span class="fechar" onclick="fecharQR()">&times;</span>
+
+        <h2>📱 Conecte o aplicativo</h2>
+
+        <img src="istockphoto-1251071750-612x612.jpg" alt="QR Code">
+
+        <p>
+            Escaneie o QR Code para conectar sua plataforma.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+
+function abrirQR(){
+    document.getElementById("popupQR").style.display = "flex";
+}
+
+function fecharQR(){
+    document.getElementById("popupQR").style.display = "none";
+}
+
+window.onclick = function(event){
+
+    const popup = document.getElementById("popupQR");
+
+    if(event.target == popup){
+        fecharQR();
+    }
+
+}
+
+</script>
+</body>
+</html>

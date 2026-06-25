@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Landing Page</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#edf5ef;
+}
+
+/* MENU */
+
+header{
+    width:100%;
+    padding:20px 60px;
+}
+
+nav{
+    background:white;
+    border-radius:20px;
+    padding:20px 40px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:35px;
+    font-weight:bold;
+    color:#1f9b4f;
+}
+
+.menu{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#1d2b3a;
+    font-weight:600;
+}
+
+.btn-topo{
+    background:#1f9b4f;
+    color:white!important;
+    padding:15px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+    width:100%;
+    min-height:80vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:50px 80px;
+    gap:50px;
+}
+
+/* TEXTO */
+
+.texto{
+    max-width:600px;
+}
+
+.badge{
+    display:inline-block;
+    background:white;
+    padding:12px 25px;
+    border-radius:30px;
+    margin-bottom:30px;
+    color:#1f9b4f;
+    font-weight:bold;
+}
+
+.texto h1{
+    font-size:65px;
+    line-height:1.1;
+    color:#1d2b3a;
+    margin-bottom:25px;
+}
+
+.texto h1 span{
+    color:#1f9b4f;
+}
+
+.lista{
+    display:flex;
+    gap:25px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+}
+
+.lista p{
+    color:#1d2b3a;
+}
+
+/* FORM */
+
+.formulario{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.formulario input{
+    padding:20px;
+    width:280px;
+    border:none;
+    border-radius:40px;
+    font-size:16px;
+}
+
+.formulario button{
+    padding:20px 35px;
+    border:none;
+    border-radius:40px;
+    background:#1f9b4f;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* IMAGEM */
+
+.imagem{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.imagem img{
+    width:100%;
+    max-width:500px;
+    border-radius:30px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:1000px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .texto h1{
+        font-size:45px;
+    }
+
+    .lista{
+        justify-content:center;
+    }
+
+    .formulario{
+        justify-content:center;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+}
+</style>
+</head>
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">EMPREENDODORISMO TEC</div>
+
+<ul class="menu">
+    <li><a href="plataformas.html">Plataformas</a></li>
+    <li><a href="recursos.html">Recursos</a></li>
+<li><a href="planos.html" class="btn-topo">Planos</a></li>    
+</ul>
+
+</header>
+
+<section class="hero">
+
+<div class="texto">
+
+<div class="badge">
+Planos a partir de R$55
+</div>
+
+<h1>
+<span>Gestão inteligente</span> para vender mais e se preocupar menos
+</h1>
+
+<div class="lista">
+    <p>✔ Sistema de gestão</p>
+    <p>✔ HUB de vendas</p>
+    <p>✔ Inteligência</p>
+    <p>✔ Automações</p>
+</div>
+
+<div class="formulario">
+
+<input type="email" placeholder="Coloque seu Email">
+
+<button onclick="window.location.href='planos.html'">
+    Comece o teste grátis
+</button>
+
+</div>
+
+</div>
+
+<div class="imagem">
+
+<img src="ChatGPT Image 10 de jun. de 2026, 20_01_16.png" alt="foto">
+
+</div>
+
+</section>
+
+</body>
+</html>

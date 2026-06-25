@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Planos</title>
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: #edf3ee;
+}
+
+/* MENU */
+
+header{
+    padding: 25px 60px;
+}
+
+nav{
+    background: white;
+    border-radius: 20px;
+    padding: 20px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 38px;
+    font-weight: bold;
+    color: #1fa34a;
+}
+
+.menu{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    align-items: center;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #1e2d3d;
+    font-weight: bold;
+}
+
+.botao{
+    background: #1fa34a;
+    color: white !important;
+    padding: 14px 28px;
+    border-radius: 40px;
+}
+
+/* PLANOS */
+
+.planos{
+    padding: 80px 60px;
+}
+
+.planos h2{
+    text-align: center;
+    font-size: 55px;
+    margin-bottom: 50px;
+    color: #1fa34a;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card{
+    background: white;
+    width: 320px;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.card h3{
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #1e2d3d;
+}
+
+.preco{
+    font-size: 50px;
+    font-weight: bold;
+    color: #1fa34a;
+    margin-bottom: 25px;
+}
+
+.card ul{
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.card ul li{
+    margin-bottom: 15px;
+    font-size: 17px;
+    color: #444;
+}
+
+.card button{
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 40px;
+    background: #1fa34a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* RESPONSIVO */
+
+@media(max-width: 900px){
+
+    nav{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menu{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+.verde{color: #fff3f3;}
+.graça{
+    width: fit-content;
+    margin: 20px auto;
+    background: rgb(59, 128, 19);
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.faq{
+    max-width:800px;
+    margin:60px auto;
+    padding:20px;
+}
+
+.faq h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#1fa34a;
+}
+
+.pergunta{
+    margin-bottom:15px;
+}
+
+.pergunta button{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:10px;
+    background:#1fa34a;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    text-align:left;
+}
+
+.resposta{
+    display:none;
+    background:white;
+    padding:15px;
+    border-radius:0 0 10px 10px;
+    line-height:1.6;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+EMPREENDEDORISMO TEC
+</div>
+
+<ul class="menu">
+<li><a href="index.html">inicio</a></li>
+
+<li><a href="recursos.html">Recursos</a></li>
+<li><a href="plataformas.html">Plataformas</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="planos">
+
+<p class="graça">Primeiro mês no plano Básico de <span class="verde"> graça </span></p>
+
+<h2>Nossos Planos</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Básico</h3>
+
+<div class="preco">
+R$55
+</div>
+
+<ul>
+<li>✔ 1 usuário</li>
+<li>✔ Controle de vendas</li>
+<li>✔ Relatórios básicos</li>
+<li>✔ Suporte por email</li>
+</ul>
+
+<button>Assinar Plano</button>
+
+</div>
+
+<div class="card">
+
+<h3>Profissional</h3>
+
+<div class="preco">
+R$99
+</div>
+
+<ul>
+<li>✔ 5 usuários</li>
+<li>✔ Automação completa</li>
+<li>✔ Relatórios avançados</li>
+<li>✔ Suporte prioritário</li>
+</ul>
+
+<button>Assinar Plano</button>
+
+</div>
+
+<div class="card">
+
+<h3>Premium</h3>
+
+<div class="preco">
+R$149
+</div>
+
+<ul>
+<li>✔ Usuários ilimitados</li>
+<li>✔ Inteligência artificial</li>
+<li>✔ Integrações avançadas</li>
+<li>✔ Suporte 24h</li>
+</ul>
+
+<button>Assinar Plano</button>
+
+</div>
+
+</div>
+
+</section>
+<section class="faq">
+
+<h2>Perguntas Frequentes</h2>
+
+<div class="pergunta">
+    <button onclick="abrirResposta('r1')">
+        Qual é a forma de pagamento?
+    </button>
+
+    <p id="r1" class="resposta">
+        Aceitamos cartões de crédito, Pix e boleto bancário. O pagamento é realizado em um ambiente totalmente seguro.
+    </p>
+</div>
+
+<div class="pergunta">
+    <button onclick="abrirResposta('r2')">
+        Posso cancelar quando quiser?
+    </button>
+
+    <p id="r2" class="resposta">
+        Sim. Você pode cancelar seu plano a qualquer momento, sem multas ou taxas de cancelamento.
+    </p>
+</div>
+
+<div class="pergunta">
+    <button onclick="abrirResposta('r3')">
+        O primeiro mês é realmente gratuito?
+    </button>
+
+    <p id="r3" class="resposta">
+        Sim. No plano Básico, você utiliza todos os recursos durante o primeiro mês sem cobrança.
+    </p>
+</div>
+
+<div class="pergunta">
+    <button onclick="abrirResposta('r4')">
+        Posso trocar de plano depois?
+    </button>
+
+    <p id="r4" class="resposta">
+        Sim. Você pode fazer upgrade ou downgrade do plano sempre que desejar.
+    </p>
+</div>
+
+</section>
+<script>
+function abrirResposta(id){
+
+    let resposta = document.getElementById(id);
+
+    if(resposta.style.display=="block"){
+        resposta.style.display="none";
+    }else{
+        resposta.style.display="block";
+    }
+
+}
+</script>
+</body>
+</html>
