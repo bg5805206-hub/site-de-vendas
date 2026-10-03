@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Planos</title>
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body{
+    overflow-x:hidden;
+    width:100%;
+}
+
+body{
+    background: #edf3ee;
+}
+
+/* MENU */
+
+header{
+    padding: 25px 60px;
+}
+
+nav{
+    background: white;
+    border-radius: 20px;
+    padding: 20px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.logo{
+    font-size: 38px;
+    font-weight: bold;
+    color: #1fa34a;
+}
+
+.menu{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    align-items: center;
+    flex-wrap:wrap;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #1e2d3d;
+    font-weight: bold;
+}
+
+.botao{
+    background: #1fa34a;
+    color: white !important;
+    padding: 14px 28px;
+    border-radius: 40px;
+}
+
+/* PLANOS */
+
+.planos{
+    padding: 80px 60px 40px;
+}
+
+.planos h2{
+    text-align: center;
+    font-size: 55px;
+    margin-bottom: 50px;
+    color: #1fa34a;
+}
+
+.graça{
+    width: fit-content;
+    margin: 0 auto 30px;
+    background: rgb(59, 128, 19);
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-align:center;
+}
+
+.verde{
+    color:#ffffff;
+    font-weight:800;
+    text-decoration:underline;
+}
+
+.toggle-planos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-bottom:40px;
+}
+
+.toggle-planos span{
+    font-weight:600;
+    color:#1e2d3d;
+}
+
+.switch{
+    width:60px;
+    height:32px;
+    background:#1fa34a;
+    border-radius:30px;
+    position:relative;
+    cursor:pointer;
+}
+
+.switch::before{
+    content:"";
+    position:absolute;
+    width:26px;
+    height:26px;
+    background:white;
+    border-radius:50%;
+    top:3px;
+    left:3px;
+    transition:left .25s ease;
+}
+
+.switch.anual::before{
+    left:31px;
+}
+
+.desconto-tag{
+    background:#1fa34a;
+    color:white;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+.cards{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card{
+    background: white;
+    width: 320px;
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform .3s ease, opacity .5s ease;
+    position:relative;
+
+    opacity:0;
+    transform:translateY(25px);
+}
+
+.card.ativo{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.card.ativo:hover{
+    transform:translateY(-10px);
+}
+
+.card.popular{
+    border:3px solid #1fa34a;
+}
+
+.tag-popular{
+    position:absolute;
+    top:-14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#1fa34a;
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+    padding:6px 18px;
+    border-radius:20px;
+    white-space:nowrap;
+}
+
+.card h3{
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #1e2d3d;
+}
+
+.preco{
+    font-size: 50px;
+    font-weight: bold;
+    color: #1fa34a;
+    margin-bottom: 25px;
+}
+
+.card ul{
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.card ul li{
+    margin-bottom: 15px;
+    font-size: 17px;
+    color: #444;
+}
+
+.card button{
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 40px;
+    background: #1fa34a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* FAQ */
+
+.faq{
+    max-width:800px;
+    margin:60px auto;
+    padding:20px;
+}
+
+.faq h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#1fa34a;
+}
+
+.pergunta{
+    margin-bottom:15px;
+    opacity:0;
+    transform:translateY(15px);
+    transition:opacity .5s ease, transform .5s ease;
+}
+
+.pergunta.ativo{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.pergunta button{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:10px;
+    background:#1fa34a;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    text-align:left;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.pergunta .sinal{
+    font-size:22px;
+    transition:transform .25s ease;
+}
+
+.pergunta button.aberto .sinal{
+    transform:rotate(45deg);
+}
+
+.resposta{
+    display:none;
+    background:white;
+    padding:15px;
+    border-radius:0 0 10px 10px;
+    line-height:1.6;
+}
+
+/* RESPONSIVO - TABLET */
+
+@media(max-width: 900px){
+
+    nav{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menu{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+/* RESPONSIVO - CELULAR */
+
+@media(max-width:600px){
+
+    header{
+        padding:15px 20px;
+    }
+
+    nav{
+        padding:15px 20px;
+        border-radius:16px;
+    }
+
+    .logo{
+        font-size:26px;
+    }
+
+    .planos{
+        padding:40px 20px 20px;
+    }
+
+    .planos h2{
+        font-size:34px;
+        margin-bottom:30px;
+    }
+
+    .graça{
+        font-size:16px;
+        padding:10px 18px;
+    }
+
+    .card{
+        width:100%;
+        padding:28px;
+    }
+
+    .faq{
+        margin:40px auto;
+        padding:0 15px;
+    }
+
+    .pergunta button{
+        padding:15px;
+        font-size:15px;
+    }
+
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+EMPREENDEDORISMO TEC
+</div>
+
+<ul class="menu">
+<li><a href="index.html">inicio</a></li>
+
+<li><a href="recursos.html">Recursos</a></li>
+<li><a href="plataformas.html">Plataformas</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="planos">
+
+<p class="graça">Primeiro mês no plano Básico de <span class="verde">graça</span></p>
+
+<h2>Nossos Planos</h2>
+
+<div class="toggle-planos">
+    <span>Mensal</span>
+    <div class="switch" id="switch-planos" onclick="alternarPlanos()"></div>
+    <span>Anual <span class="desconto-tag">-20%</span></span>
+</div>
+
+<div class="cards" id="lista-planos">
+
+<div class="card" data-plano="Básico">
+
+<h3>Básico</h3>
+
+<div class="preco">
+R$<span class="preco-valor" data-mensal="55" data-anual="44">55</span>
+</div>
+
+<ul>
+<li>✔ 1 usuário</li>
+<li>✔ Controle de vendas</li>
+<li>✔ Relatórios básicos</li>
+<li>✔ Suporte por email</li>
+</ul>
+
+<button onclick="assinarPlano('Básico')">Assinar Plano</button>
+
+</div>
+
+<div class="card popular" data-plano="Profissional">
+
+<span class="tag-popular">⭐ Mais popular</span>
+
+<h3>Profissional</h3>
+
+<div class="preco">
+R$<span class="preco-valor" data-mensal="99" data-anual="79">99</span>
+</div>
+
+<ul>
+<li>✔ 5 usuários</li>
+<li>✔ Automação completa</li>
+<li>✔ Relatórios avançados</li>
+<li>✔ Suporte prioritário</li>
+</ul>
+
+<button onclick="assinarPlano('Profissional')">Assinar Plano</button>
+
+</div>
+
+<div class="card" data-plano="Premium">
+
+<h3>Premium</h3>
+
+<div class="preco">
+R$<span class="preco-valor" data-mensal="149" data-anual="119">149</span>
+</div>
+
+<ul>
+<li>✔ Usuários ilimitados</li>
+<li>✔ Inteligência artificial</li>
+<li>✔ Integrações avançadas</li>
+<li>✔ Suporte 24h</li>
+</ul>
+
+<button onclick="assinarPlano('Premium')">Assinar Plano</button>
+
+</div>
+
+</div>
+
+</section>
+<section class="faq" id="lista-faq">
+
+<h2>Perguntas Frequentes</h2>
+
+<div class="pergunta">
+    <button onclick="abrirResposta('r1', this)">
+        <span>Qual é a forma de pagamento?</span>
+        <span class="sinal">+</span>
+    </button>
+
+    <p id="r1" class="resposta">
+        Aceitamos cartões de crédito, Pix e boleto bancário. O pagamento é realizado em um ambiente totalmente seguro.
+    </p>
+</div>
+
+<div class="pergunta">
+    <button onclick="abrirResposta('r2', this)">
+        <span>Posso cancelar quando quiser?</span>
+        <span class="sinal">+</span>
+    </button>
+
+    <p id="r2" class="resposta">
+        Sim. Você pode cancelar seu plano a qualquer momento, sem multas ou taxas de cancelamento.
+    </p>
+</div>
+
+<div class="pergunta">
+    <button onclick="abrirResposta('r3', this)">
+        <span>O primeiro mês é realmente gratuito?</span>
+        <span class="sinal">+</span>
+    </button>
+
+    <p id="r3" class="resposta">
+        Sim. No plano Básico, você utiliza todos os recursos durante o primeiro mês sem cobrança.
+    </p>
+</div>
+
+<div class="pergunta">
+    <button onclick="abrirResposta('r4', this)">
+        <span>Posso trocar de plano depois?</span>
+        <span class="sinal">+</span>
+    </button>
+
+    <p id="r4" class="resposta">
+        Sim. Você pode fazer upgrade ou downgrade do plano sempre que desejar.
+    </p>
+</div>
+
+</section>
+<script>
+
+// Acordeão do FAQ (só uma resposta aberta por vez)
+function abrirResposta(id, botao){
+
+    let resposta = document.getElementById(id);
+    let jaAberto = resposta.style.display === "block";
+
+    document.querySelectorAll('.resposta').forEach(r => r.style.display = "none");
+    document.querySelectorAll('.pergunta button').forEach(b => b.classList.remove('aberto'));
+
+    if(!jaAberto){
+        resposta.style.display = "block";
+        botao.classList.add('aberto');
+    }
+}
+
+// Botão "Assinar Plano" leva pro WhatsApp com o plano já preenchido
+function assinarPlano(nome){
+    const periodo = modoAnual ? 'anual' : 'mensal';
+    const mensagem = encodeURIComponent(`Olá! Quero assinar o plano ${nome} (${periodo}).`);
+    window.open(`https://wa.me/5500000000000?text=${mensagem}`, '_blank');
+}
+
+// Toggle mensal/anual
+let modoAnual = false;
+function alternarPlanos(){
+    modoAnual = !modoAnual;
+    document.getElementById('switch-planos').classList.toggle('anual', modoAnual);
+    document.querySelectorAll('.preco-valor').forEach(el => {
+        el.textContent = modoAnual ? el.dataset.anual : el.dataset.mensal;
+    });
+}
+
+// Animação de entrada
+function ativarReveal(seletor){
+    const itens = document.querySelectorAll(seletor);
+    const obs = new IntersectionObserver((entradas) => {
+        entradas.forEach((entrada, i) => {
+            if(entrada.isIntersecting){
+                setTimeout(() => entrada.target.classList.add('ativo'), i * 100);
+                obs.unobserve(entrada.target);
+            }
+        });
+    }, {threshold:0.15});
+    itens.forEach(el => obs.observe(el));
+}
+
+ativarReveal('#lista-planos .card');
+ativarReveal('#lista-faq .pergunta');
+
+</script>
+</body>
+</html>

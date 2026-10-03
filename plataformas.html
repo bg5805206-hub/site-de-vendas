@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plataformas Aceitas</title>
+
+<style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body{
+    overflow-x:hidden;
+    width:100%;
+}
+
+body{
+    background: #edf3ee;
+}
+
+/* MENU */
+
+header{
+    padding: 25px 60px;
+}
+
+nav{
+    background: white;
+    border-radius: 20px;
+    padding: 20px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.logo{
+    font-size: 35px;
+    font-weight: bold;
+    color: #1fa34a;
+}
+
+.menu{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    flex-wrap:wrap;
+}
+
+.menu a{
+    text-decoration: none;
+    color: #1e2d3d;
+    font-weight: bold;
+}
+
+/* TOPO */
+
+.topo{
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.badge{
+    display: inline-block;
+    background: white;
+    color: #1fa34a;
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.topo h1{
+    font-size: 60px;
+    color: #1e2d3d;
+}
+
+.topo span{
+    color: #1fa34a;
+}
+
+.topo p{
+    margin-top: 20px;
+    color: #555;
+    font-size: 20px;
+}
+
+/* BUSCA */
+
+.busca{
+    max-width:400px;
+    margin:30px auto 0;
+}
+
+.busca input{
+    width:100%;
+    padding:16px 25px;
+    border:none;
+    border-radius:40px;
+    font-size:16px;
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+}
+
+/* PLATAFORMAS */
+
+.plataformas{
+    padding: 40px 60px 80px;
+
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card{
+    background: white;
+    width: 300px;
+    padding: 35px;
+    border-radius: 25px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+
+    transition: 0.3s;
+    position:relative;
+
+    opacity:0;
+    transform:translateY(20px);
+}
+
+.card.ativo{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.card:hover{
+    transform: translateY(-10px);
+}
+
+.card.ativo:hover{
+    transform:translateY(-10px);
+}
+
+.tag-popular{
+    position:absolute;
+    top:-12px;
+    right:20px;
+    background:#e0793c;
+    color:white;
+    font-size:12px;
+    font-weight:bold;
+    padding:6px 14px;
+    border-radius:20px;
+}
+
+.icone{
+    font-size: 60px;
+    margin-bottom: 20px;
+}
+
+.card h2{
+    color: #1fa34a;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.card p{
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.card button{
+    border: none;
+    background: #1fa34a;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.card-em-breve{
+    border:2px dashed #1fa34a;
+    box-shadow:none;
+    background:transparent;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    color:#1fa34a;
+    font-weight:bold;
+}
+
+/* RESPONSIVO - TABLET */
+
+@media(max-width: 900px){
+
+    nav{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .menu{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .topo h1{
+        font-size: 42px;
+    }
+
+}
+
+/* RESPONSIVO - CELULAR */
+
+@media(max-width:600px){
+
+    header{
+        padding:15px 20px;
+    }
+
+    nav{
+        padding:15px 20px;
+        border-radius:16px;
+    }
+
+    .logo{
+        font-size:26px;
+    }
+
+    .topo{
+        padding:50px 20px 30px;
+    }
+
+    .topo h1{
+        font-size:30px;
+    }
+
+    .topo p{
+        font-size:16px;
+    }
+
+    .plataformas{
+        padding:30px 20px 50px;
+        gap:20px;
+    }
+
+    .card{
+        width:100%;
+        padding:28px;
+    }
+
+    .popup-conteudo{
+        width:300px;
+        padding:22px;
+    }
+
+}
+
+/* POPUP */
+
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    padding:20px;
+}
+
+.popup-conteudo{
+    background:#fff;
+    width:350px;
+    max-width:90vw;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    position:relative;
+    animation:popup .3s;
+}
+
+#qrcode-plataformas{
+    display:flex;
+    justify-content:center;
+    margin:20px 0;
+}
+
+.popup-conteudo h2{
+    color:#1fa34a;
+}
+
+.popup-conteudo p{
+    color:#555;
+}
+
+.fechar{
+    position:absolute;
+    top:10px;
+    right:18px;
+    font-size:35px;
+    cursor:pointer;
+    line-height:1;
+}
+
+.fechar:hover{
+    color:red;
+}
+
+@keyframes popup{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+PLATAFORMAS
+</div>
+
+<ul class="menu">
+<li><a href="index.html">Início</a></li>
+<li><a href="recursos.html">Recursos</a></li>
+<li><a href="planos.html">Planos</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="topo">
+
+<div class="badge">
+Plataformas aceitas no sistema
+</div>
+
+<h1>
+Venda em várias <span>plataformas</span><br>
+ao mesmo tempo
+</h1>
+
+<p>
+Integre sua loja com marketplaces, redes sociais e sistemas de pagamento.
+</p>
+
+<div class="busca">
+    <input type="text" id="campo-busca" placeholder="🔍 Buscar plataforma..." oninput="filtrarPlataformas()">
+</div>
+
+</section>
+
+<section class="plataformas" id="lista-plataformas">
+
+<div class="card" data-nome="shopify">
+
+<div class="icone">🛒</div>
+
+<h2>Shopify</h2>
+
+<p>
+Integre sua loja Shopify e controle pedidos, clientes e vendas em um só painel.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+<div class="card" data-nome="mercado livre">
+
+<span class="tag-popular">Mais usada</span>
+
+<div class="icone">📦</div>
+
+<h2>Mercado Livre</h2>
+
+<p>
+Gerencie anúncios, estoque e entregas automaticamente pelo sistema.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+<div class="card" data-nome="instagram">
+
+<div class="icone">📱</div>
+
+<h2>Instagram</h2>
+
+<p>
+Venda pelas redes sociais e acompanhe mensagens e pedidos facilmente.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+<div class="card" data-nome="pix">
+
+<div class="icone">💳</div>
+
+<h2>Pix</h2>
+
+<p>
+Receba pagamentos instantâneos com integração rápida e segura.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+</div>
+
+<div class="card" data-nome="paypal">
+
+<div class="icone">💰</div>
+
+<h2>PayPal</h2>
+
+<p>
+Aceite pagamentos online nacionais e internacionais com segurança.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+<div class="card" data-nome="shopee">
+
+<div class="icone">🏪</div>
+
+<h2>Shopee</h2>
+
+<p>
+Controle suas vendas da Shopee diretamente pelo sistema da plataforma.
+</p>
+
+<button onclick="abrirQR()">
+📱 Conectar aplicativo
+</button>
+
+</div>
+
+<div class="card card-em-breve ativo" data-nome="em breve">
+    <div class="icone">➕</div>
+    <p>Sua plataforma não está na lista?</p>
+    <a href="https://wa.me/5500000000000" style="color:#1fa34a;text-decoration:underline;">Fale com a gente</a>
+</div>
+
+</section>
+
+<!-- POPUP -->
+
+<div id="popupQR" class="popup">
+
+    <div class="popup-conteudo">
+
+        <span class="fechar" onclick="fecharQR()">&times;</span>
+
+        <h2>📱 Conecte o aplicativo</h2>
+
+        <div id="qrcode-plataformas"></div>
+
+        <p>
+            Escaneie o QR Code para conectar sua plataforma.
+        </p>
+
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+
+let qrGerado = false;
+
+function abrirQR(){
+    document.getElementById("popupQR").style.display = "flex";
+    if(!qrGerado){
+        new QRCode(document.getElementById("qrcode-plataformas"), {
+            text: "https://seusite.com/conectar",
+            width: 200,
+            height: 200,
+            colorDark: "#1e2d3d",
+            colorLight: "#ffffff"
+        });
+        qrGerado = true;
+    }
+}
+
+function fecharQR(){
+    document.getElementById("popupQR").style.display = "none";
+}
+
+window.onclick = function(event){
+    const popup = document.getElementById("popupQR");
+    if(event.target == popup){
+        fecharQR();
+    }
+}
+
+// Animação de entrada dos cards
+const cards = document.querySelectorAll('.card');
+const observerCards = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada, i) => {
+        if(entrada.isIntersecting){
+            setTimeout(() => entrada.target.classList.add('ativo'), i * 80);
+            observerCards.unobserve(entrada.target);
+        }
+    });
+}, {threshold:0.15});
+cards.forEach(card => observerCards.observe(card));
+
+// Busca / filtro de plataformas
+function filtrarPlataformas(){
+    const termo = document.getElementById('campo-busca').value.toLowerCase();
+    document.querySelectorAll('#lista-plataformas .card:not(.card-em-breve)').forEach(card => {
+        const nome = card.dataset.nome;
+        card.style.display = nome.includes(termo) ? "" : "none";
+    });
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+<title>Landing Page</title>
+ 
+<style>
+ 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ 
+body{
+    overflow-x:hidden;
+    width:100%;
+    background:#edf5ef;
+}
+ 
+/* MENU */
+ 
+header{
+    width:100%;
+    padding:20px 60px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    transition:padding .25s ease;
+}
+ 
+header.scrolled{
+    padding:10px 60px;
+}
+ 
+nav{
+    background:white;
+    border-radius:20px;
+    padding:20px 40px;
+ 
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    transition:padding .25s ease, box-shadow .25s ease;
+}
+ 
+header.scrolled nav{
+    padding:12px 40px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+ 
+.logo{
+    font-size:35px;
+    font-weight:bold;
+    color:#1f9b4f;
+}
+ 
+.menu{
+    display:flex;
+    gap:35px;
+    list-style:none;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+ 
+.menu a{
+    text-decoration:none;
+    color:#1d2b3a;
+    font-weight:600;
+}
+ 
+.btn-topo{
+    background:#1f9b4f;
+    color:white!important;
+    padding:15px 25px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+}
+ 
+/* HERO */
+ 
+.hero{
+    width:100%;
+    min-height:80vh;
+ 
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+ 
+    padding:50px 80px;
+    gap:50px;
+}
+ 
+.texto{
+    max-width:600px;
+}
+ 
+.badge{
+    display:inline-block;
+    background:white;
+    padding:12px 25px;
+    border-radius:30px;
+    margin-bottom:30px;
+    color:#1f9b4f;
+    font-weight:bold;
+}
+ 
+.texto h1{
+    font-size:65px;
+    line-height:1.1;
+    color:#1d2b3a;
+    margin-bottom:25px;
+}
+ 
+.texto h1 span{
+    color:#1f9b4f;
+}
+ 
+.lista{
+    display:flex;
+    gap:25px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+}
+ 
+.lista p{
+    color:#1d2b3a;
+}
+ 
+.formulario{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    width:100%;
+}
+ 
+.formulario input{
+    padding:20px;
+    width:280px;
+    max-width:100%;
+    border:none;
+    border-radius:40px;
+    font-size:16px;
+}
+ 
+.formulario button{
+    padding:20px 35px;
+    border:none;
+    border-radius:40px;
+    background:#1f9b4f;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+ 
+.imagem{
+    flex:1;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    max-width:100%;
+}
+ 
+.hero-carrossel-wrap{
+    width:100%;
+    max-width:500px;
+}
+ 
+.hero-carrossel{
+    position:relative;
+    width:100%;
+    aspect-ratio:3/2;
+}
+ 
+.hero-carrossel img{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    border-radius:30px;
+    display:none;
+}
+ 
+.hero-carrossel img.ativo{
+    display:block;
+}
+ 
+.hero-dots{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:15px;
+}
+ 
+.hero-dots span{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#c9d9cd;
+    cursor:pointer;
+    transition:background .2s ease;
+}
+ 
+.hero-dots span.ativo{
+    background:#1f9b4f;
+}
+ 
+.seta-hero{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,.9);
+    color:#1f9b4f;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    z-index:10;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+ 
+.seta-esq{
+    left:10px;
+}
+ 
+.seta-dir{
+    right:10px;
+}
+ 
+/* REVEAL (animação de entrada ao rolar) */
+ 
+.reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity .6s ease, transform .6s ease;
+}
+ 
+.reveal.ativo{
+    opacity:1;
+    transform:translateY(0);
+}
+ 
+/* STATS (contador animado) */
+ 
+.stats{
+    padding:60px 80px;
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+    text-align:center;
+}
+ 
+.stat-num{
+    font-size:48px;
+    font-weight:bold;
+    color:#1f9b4f;
+}
+ 
+.stat-label{
+    color:#1d2b3a;
+    font-weight:600;
+    margin-top:5px;
+}
+ 
+/* DEPOIMENTOS */
+ 
+.depoimentos{
+    padding:60px 80px;
+}
+ 
+.depoimentos h2, .planos-section h2{
+    text-align:center;
+    font-size:36px;
+    color:#1d2b3a;
+    margin-bottom:40px;
+}
+ 
+.carrossel{
+    position:relative;
+    max-width:700px;
+    margin:0 auto;
+    overflow:hidden;
+}
+ 
+.carrossel-track{
+    display:flex;
+    transition:transform .4s ease;
+}
+ 
+.depoimento-card{
+    min-width:100%;
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    text-align:center;
+}
+ 
+.depoimento-avatar{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:bold;
+    font-size:20px;
+    margin:0 auto 15px;
+}
+ 
+.depoimento-card p{
+    color:#1d2b3a;
+    font-size:18px;
+    margin-bottom:15px;
+}
+ 
+.depoimento-card strong{
+    color:#1f9b4f;
+}
+ 
+.carrossel-nav{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:20px;
+}
+ 
+.carrossel-nav button{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:none;
+    background:white;
+    font-weight:bold;
+    font-size:18px;
+    cursor:pointer;
+    color:#1f9b4f;
+}
+ 
+/* PLANOS */
+ 
+.planos-section{
+    padding:60px 80px;
+}
+ 
+.toggle-planos{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-bottom:40px;
+}
+ 
+.toggle-planos span{
+    font-weight:600;
+    color:#1d2b3a;
+}
+ 
+.switch{
+    width:60px;
+    height:32px;
+    background:#1f9b4f;
+    border-radius:30px;
+    position:relative;
+    cursor:pointer;
+}
+ 
+.switch::before{
+    content:"";
+    position:absolute;
+    width:26px;
+    height:26px;
+    background:white;
+    border-radius:50%;
+    top:3px;
+    left:3px;
+    transition:left .25s ease;
+}
+ 
+.switch.anual::before{
+    left:31px;
+}
+ 
+.desconto-tag{
+    background:#1f9b4f;
+    color:white;
+    padding:4px 12px;
+    border-radius:20px;
+    font-size:13px;
+}
+ 
+.cards-planos{
+    display:flex;
+    gap:30px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+ 
+.plano-card{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    width:260px;
+    text-align:center;
+}
+ 
+.plano-card.destaque{
+    background:#1f9b4f;
+    color:white;
+}
+ 
+.plano-card h3{
+    margin-bottom:15px;
+}
+ 
+.plano-preco{
+    font-size:40px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+ 
+.plano-preco span{
+    font-size:16px;
+    font-weight:normal;
+}
+ 
+.plano-card ul{
+    list-style:none;
+    margin:20px 0;
+    text-align:left;
+}
+ 
+.plano-card ul li{
+    margin-bottom:10px;
+}
+ 
+.plano-card button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    background:#1d2b3a;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+ 
+.plano-card.destaque button{
+    background:white;
+    color:#1f9b4f;
+}
+ 
+/* WHATSAPP FLUTUANTE */
+ 
+.whats-flutuante{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:60px;
+    height:60px;
+    background:#25D366;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);
+    z-index:200;
+    text-decoration:none;
+}
+ 
+.whats-flutuante svg{
+    width:30px;
+    height:30px;
+}
+ 
+/* BOTÃO SECUNDÁRIO (baixar app) */
+ 
+.btn-secundario{
+    padding:20px 35px;
+    border-radius:40px;
+    background:white;
+    color:#1f9b4f;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    border:2px solid #1f9b4f;
+}
+ 
+/* POPUP QR */
+ 
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    padding:20px;
+}
+ 
+.popup-conteudo{
+    background:#fff;
+    width:350px;
+    max-width:90vw;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    position:relative;
+    animation:popup .3s;
+}
+ 
+#qrcode-home{
+    display:flex;
+    justify-content:center;
+    margin:20px 0;
+}
+ 
+.popup-conteudo h2{
+    color:#1f9b4f;
+}
+ 
+.popup-conteudo p{
+    color:#555;
+}
+ 
+.fechar{
+    position:absolute;
+    top:10px;
+    right:18px;
+    font-size:35px;
+    cursor:pointer;
+    line-height:1;
+}
+ 
+.fechar:hover{
+    color:red;
+}
+ 
+@keyframes popup{
+    from{ opacity:0; transform:scale(.8); }
+    to{ opacity:1; transform:scale(1); }
+}
+ 
+/* RESPONSIVO - TABLET */
+ 
+@media(max-width:1000px){
+ 
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:40px 30px;
+    }
+ 
+    .texto h1{
+        font-size:45px;
+    }
+ 
+    .lista, .formulario{
+        justify-content:center;
+    }
+ 
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+ 
+    .stats, .depoimentos, .planos-section{
+        padding:50px 30px;
+    }
+ 
+}
+ 
+/* RESPONSIVO - CELULAR */
+ 
+@media(max-width:600px){
+ 
+    header{
+        padding:15px 20px;
+    }
+ 
+    header.scrolled{
+        padding:8px 20px;
+    }
+ 
+    nav{
+        padding:15px 20px;
+        border-radius:16px;
+    }
+ 
+    .logo{
+        font-size:24px;
+    }
+ 
+    .menu{
+        gap:18px;
+    }
+ 
+    .hero{
+        padding:30px 20px;
+        gap:30px;
+    }
+ 
+    .texto h1{
+        font-size:32px;
+    }
+ 
+    .badge{
+        padding:10px 18px;
+        font-size:14px;
+        margin-bottom:20px;
+    }
+ 
+    .lista{
+        gap:15px;
+    }
+ 
+    .lista p{
+        font-size:14px;
+    }
+ 
+    .formulario{
+        flex-direction:column;
+    }
+ 
+    .formulario input,
+    .formulario button,
+    .formulario .btn-secundario{
+        width:100%;
+    }
+ 
+    .stats, .depoimentos, .planos-section{
+        padding:40px 20px;
+    }
+ 
+    .stats{
+        gap:30px;
+    }
+ 
+    .stat-num{
+        font-size:36px;
+    }
+ 
+    .whats-flutuante{
+        width:52px;
+        height:52px;
+        bottom:15px;
+        right:15px;
+    }
+ 
+}
+ 
+</style>
+</head>
+<body>
+ 
+<header id="site-header">
+ 
+<nav>
+ 
+<div class="logo">EMPREENDODORISMO TEC</div>
+ 
+<ul class="menu">
+    <li><a href="plataformas.html">Plataformas</a></li>
+    <li><a href="recursos.html">Recursos</a></li>
+    <li><a href="planos.html" class="btn-topo">Planos</a></li>
+</ul>
+ 
+</nav>
+ 
+</header>
+ 
+<section class="hero">
+ 
+<div class="texto">
+ 
+<div class="badge">
+Planos a partir de R$55
+</div>
+ 
+<h1>
+<span>Gestão inteligente</span> para vender mais e se preocupar menos
+</h1>
+ 
+<div class="lista">
+    <p>✔ Sistema de gestão</p>
+    <p>✔ HUB de vendas</p>
+    <p>✔ Inteligência</p>
+    <p>✔ Automações</p>
+</div>
+ 
+<div class="formulario">
+ 
+<input type="email" placeholder="Coloque seu Email">
+ 
+<button onclick="window.location.href='planos.html'">
+    Comece o teste grátis
+</button>
+ 
+<button type="button" class="btn-secundario" onclick="abrirQR()">
+    📱 Baixar app
+</button>
+ 
+</div>
+ 
+</div>
+ 
+<div class="imagem">
+ 
+<div class="hero-carrossel-wrap">
+ 
+    <div class="hero-carrossel">
+ 
+        <img src="hero.png" alt="Automações inteligentes da plataforma" class="ativo">
+        <img src="hero2.png" alt="Dashboard de vendas da plataforma">
+ 
+        <button class="seta-hero seta-esq" onclick="moverHero(-1)" aria-label="Imagem anterior">&#8249;</button>
+        <button class="seta-hero seta-dir" onclick="moverHero(1)" aria-label="Próxima imagem">&#8250;</button>
+ 
+    </div>
+ 
+    <div class="hero-dots" id="hero-dots">
+        <span class="ativo" onclick="mostrarHero(0)"></span>
+        <span onclick="mostrarHero(1)"></span>
+    </div>
+ 
+</div>
+ 
+</div>
+ 
+</section>
+ 
+<!-- STATS -->
+ 
+<section class="stats reveal">
+    <div>
+        <div class="stat-num" data-alvo="500">0</div>
+        <div class="stat-label">Empresas atendidas</div>
+    </div>
+    <div>
+        <div class="stat-num" data-alvo="98">0</div>
+        <div class="stat-label">% de satisfação</div>
+    </div>
+    <div>
+        <div class="stat-num" data-alvo="24">0</div>
+        <div class="stat-label">Horas de suporte</div>
+    </div>
+</section>
+ 
+<!-- DEPOIMENTOS -->
+ 
+<section class="depoimentos reveal">
+ 
+<h2>O que dizem nossos clientes</h2>
+ 
+<div class="carrossel">
+    <div class="carrossel-track" id="carrossel-track">
+ 
+        <div class="depoimento-card">
+            <div class="depoimento-avatar" style="background:#1f9b4f">MS</div>
+            <p>"Depois que comecei a usar, minhas vendas organizaram de um jeito que eu nunca tinha conseguido sozinho."</p>
+            <strong>Marcos Silva</strong> — Loja de roupas
+        </div>
+ 
+        <div class="depoimento-card">
+            <div class="depoimento-avatar" style="background:#e0793c">AP</div>
+            <p>"O suporte responde rápido e o sistema é bem simples de entender, mesmo eu não sendo da área de tecnologia."</p>
+            <strong>Ana Paula</strong> — Confeitaria
+        </div>
+ 
+        <div class="depoimento-card">
+            <div class="depoimento-avatar" style="background:#3c7ce0">RC</div>
+            <p>"As automações economizam um tempo enorme do meu dia. Recomendo demais."</p>
+            <strong>Rafael Costa</strong> — Distribuidora
+        </div>
+ 
+    </div>
+ 
+    <div class="carrossel-nav">
+        <button onclick="moverCarrossel(-1)">&#8592;</button>
+        <button onclick="moverCarrossel(1)">&#8594;</button>
+    </div>
+ 
+</div>
+ 
+</section>
+ 
+<!-- PLANOS -->
+ 
+<section class="planos-section reveal">
+ 
+<h2>Escolha seu plano</h2>
+ 
+<div class="toggle-planos">
+    <span>Mensal</span>
+    <div class="switch" id="switch-planos" onclick="alternarPlanos()"></div>
+    <span>Anual <span class="desconto-tag">-20%</span></span>
+</div>
+ 
+<div class="cards-planos">
+ 
+    <div class="plano-card">
+        <h3>Básico</h3>
+        <div class="plano-preco">
+            <span>R$</span><span class="preco" data-mensal="55" data-anual="44">55</span><span>/mês</span>
+        </div>
+        <ul>
+            <li>✔ Sistema de gestão</li>
+            <li>✔ Até 100 vendas/mês</li>
+            <li>✔ Suporte por email</li>
+        </ul>
+        <button onclick="window.location.href='planos.html'">Assinar</button>
+    </div>
+ 
+    <div class="plano-card destaque">
+        <h3>Profissional</h3>
+        <div class="plano-preco">
+            <span>R$</span><span class="preco" data-mensal="99" data-anual="79">99</span><span>/mês</span>
+        </div>
+        <ul>
+            <li>✔ Tudo do Básico</li>
+            <li>✔ HUB de vendas</li>
+            <li>✔ Automações</li>
+        </ul>
+        <button onclick="window.location.href='planos.html'">Assinar</button>
+    </div>
+ 
+    <div class="plano-card">
+        <h3>Avançado</h3>
+        <div class="plano-preco">
+            <span>R$</span><span class="preco" data-mensal="179" data-anual="143">179</span><span>/mês</span>
+        </div>
+        <ul>
+            <li>✔ Tudo do Profissional</li>
+            <li>✔ Inteligência de dados</li>
+            <li>✔ Suporte prioritário</li>
+        </ul>
+        <button onclick="window.location.href='planos.html'">Assinar</button>
+    </div>
+ 
+</div>
+ 
+</section>
+ 
+<!-- WHATSAPP FLUTUANTE -->
+ 
+<a class="whats-flutuante" href="https://wa.me/5500000000000" target="_blank" title="Fale conosco no WhatsApp">
+    <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 3C9.4 3 4 8.4 4 15c0 2.3.6 4.4 1.7 6.3L4 29l7.9-1.6C13.7 28.1 14.8 28.3 16 28.3c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 22.1c-1.1 0-2.2-.2-3.2-.6l-.2-.1-4.7 1 1-4.6-.2-.2C7.6 18.5 7 16.8 7 15c0-5 4-9 9-9s9 4 9 9-4 9-9 9zm5-6.7c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1-.2.3-.7.9-.8 1-.1.2-.3.2-.6.1-1.7-.8-2.9-1.5-4-3.3-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.3 0 1.4 1 2.7 1.1 2.9.1.2 2 3 4.8 4.3 1.9.8 2.6 1 3.5.8.6-.1 1.6-.7 1.9-1.3.2-.6.2-1.1.1-1.3 0-.2-.2-.2-.5-.4z"/>
+    </svg>
+</a>
+ 
+<!-- POPUP QR -->
+ 
+<div id="popupQR" class="popup">
+ 
+    <div class="popup-conteudo">
+ 
+        <span class="fechar" onclick="fecharQR()">&times;</span>
+ 
+        <h2>📱 Baixe o app</h2>
+ 
+        <div id="qrcode-home"></div>
+ 
+        <p>
+            Escaneie o QR Code com a câmera do celular para baixar o app.
+        </p>
+ 
+    </div>
+ 
+</div>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+ 
+<script>
+ 
+// Gera o QR Code (troque o link abaixo pelo link real do app/loja)
+let qrGeradoHome = false;
+function abrirQR(){
+    document.getElementById("popupQR").style.display = "flex";
+    if(!qrGeradoHome){
+        new QRCode(document.getElementById("qrcode-home"), {
+            text: "https://seusite.com/app",
+            width: 200,
+            height: 200,
+            colorDark: "#1d2b3a",
+            colorLight: "#ffffff"
+        });
+        qrGeradoHome = true;
+    }
+}
+ 
+function fecharQR(){
+    document.getElementById("popupQR").style.display = "none";
+}
+ 
+window.addEventListener('click', (event) => {
+    const popup = document.getElementById("popupQR");
+    if(event.target === popup) fecharQR();
+});
+ 
+// Carrossel de imagens da hero
+let indiceHero = 0;
+const heroImgs = document.querySelectorAll('.hero-carrossel img');
+const heroDots = document.querySelectorAll('#hero-dots span');
+function mostrarHero(i){
+    indiceHero = i;
+    heroImgs.forEach((img, idx) => img.classList.toggle('ativo', idx === i));
+    heroDots.forEach((dot, idx) => dot.classList.toggle('ativo', idx === i));
+}
+function moverHero(direcao){
+    mostrarHero((indiceHero + direcao + heroImgs.length) % heroImgs.length);
+}
+setInterval(() => {
+    mostrarHero((indiceHero + 1) % heroImgs.length);
+}, 4000);
+ 
+// Header encolhe ao rolar
+window.addEventListener('scroll', () => {
+    document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 30);
+});
+ 
+// Animação de entrada (reveal)
+const reveals = document.querySelectorAll('.reveal');
+const observerReveal = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+        if(entrada.isIntersecting){
+            entrada.target.classList.add('ativo');
+        }
+    });
+}, {threshold:0.2});
+reveals.forEach(el => observerReveal.observe(el));
+ 
+// Contador animado
+function animarContador(el){
+    const alvo = parseInt(el.dataset.alvo);
+    let atual = 0;
+    const passo = Math.ceil(alvo / 60);
+    const intervalo = setInterval(() => {
+        atual += passo;
+        if(atual >= alvo){
+            atual = alvo;
+            clearInterval(intervalo);
+        }
+        el.textContent = atual;
+    }, 25);
+}
+ 
+const statsSection = document.querySelector('.stats');
+const observerStats = new IntersectionObserver((entradas) => {
+    entradas.forEach(entrada => {
+        if(entrada.isIntersecting){
+            document.querySelectorAll('.stat-num').forEach(animarContador);
+            observerStats.disconnect();
+        }
+    });
+}, {threshold:0.3});
+if(statsSection) observerStats.observe(statsSection);
+ 
+// Carrossel de depoimentos
+let indiceCarrossel = 0;
+function moverCarrossel(direcao){
+    const track = document.getElementById('carrossel-track');
+    const total = track.children.length;
+    indiceCarrossel = (indiceCarrossel + direcao + total) % total;
+    track.style.transform = `translateX(-${indiceCarrossel * 100}%)`;
+}
+ 
+// Toggle de planos mensal/anual
+let modoAnual = false;
+function alternarPlanos(){
+    modoAnual = !modoAnual;
+    document.getElementById('switch-planos').classList.toggle('anual', modoAnual);
+    document.querySelectorAll('.preco').forEach(el => {
+        el.textContent = modoAnual ? el.dataset.anual : el.dataset.mensal;
+    });
+}
+ 
+</script>
+ 
+</body>
+</html>

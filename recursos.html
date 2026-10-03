@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recursos</title>
+ 
+<style>
+ 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ 
+html, body{
+    overflow-x:hidden;
+    width:100%;
+}
+ 
+body{
+    background: #edf3ee;
+}
+ 
+/* MENU */
+ 
+header{
+    padding: 25px 60px;
+}
+ 
+nav{
+    background: white;
+    border-radius: 20px;
+    padding: 20px 40px;
+ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+ 
+.logo{
+    font-size: 38px;
+    font-weight: bold;
+    color: #1fa34a;
+}
+ 
+.menu{
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    flex-wrap:wrap;
+}
+ 
+.menu a{
+    text-decoration: none;
+    color: #1e2d3d;
+    font-weight: bold;
+}
+ 
+/* TITULO */
+ 
+.topo{
+    text-align: center;
+    padding: 70px 20px 40px;
+}
+ 
+.badge{
+    display: inline-block;
+    background: white;
+    color: #1fa34a;
+    padding: 14px 30px;
+    border-radius: 40px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-size:16px;
+}
+ 
+.topo h1{
+    font-size: 60px;
+    color: #1e2d3d;
+}
+ 
+.topo span{
+    color: #1fa34a;
+}
+ 
+.contador-recursos{
+    margin-top:20px;
+    color:#1fa34a;
+    font-weight:bold;
+    font-size:18px;
+}
+ 
+/* RECURSOS */
+ 
+.recursos{
+    padding: 40px 60px 60px;
+ 
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+ 
+.card{
+    background: white;
+    width: 320px;
+    padding: 35px;
+    border-radius: 25px;
+ 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+ 
+    transition: transform .3s ease, opacity .5s ease;
+ 
+    opacity:0;
+    transform:translateY(25px);
+}
+ 
+.card.ativo{
+    opacity:1;
+    transform:translateY(0);
+}
+ 
+.card:hover{
+    transform: translateY(-10px);
+}
+ 
+.card.ativo:hover{
+    transform:translateY(-10px);
+}
+ 
+.card .icone-card{
+    font-size:34px;
+    display:inline-block;
+    transition:transform .3s ease;
+}
+ 
+.card:hover .icone-card{
+    transform:rotate(-12deg) scale(1.15);
+}
+ 
+.card h2{
+    color: #1fa34a;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+ 
+.card p{
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+ 
+.card button{
+    border: none;
+    background: #1fa34a;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+ 
+/* CTA FINAL */
+ 
+.cta-final{
+    text-align:center;
+    padding:20px 20px 80px;
+}
+ 
+.cta-final p{
+    color:#1e2d3d;
+    font-size:20px;
+    margin-bottom:20px;
+    font-weight:600;
+}
+ 
+.cta-final button{
+    border:none;
+    background:#1fa34a;
+    color:white;
+    padding:18px 40px;
+    border-radius:40px;
+    font-weight:bold;
+    font-size:16px;
+    cursor:pointer;
+}
+ 
+/* POPUP */
+ 
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+    padding:20px;
+}
+ 
+.popup-conteudo{
+    background:white;
+    width:650px;
+    max-width:90%;
+    padding:35px;
+    border-radius:20px;
+    position:relative;
+}
+ 
+.popup-conteudo h2{
+    color:#1fa34a;
+    margin-bottom:20px;
+}
+ 
+.popup-conteudo p{
+    color:#444;
+    line-height:1.8;
+}
+ 
+.fechar{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:35px;
+    cursor:pointer;
+    line-height:1;
+}
+ 
+.fechar:hover{
+    color:red;
+}
+ 
+/* RESPONSIVO - TABLET */
+ 
+@media(max-width: 900px){
+ 
+    nav{
+        flex-direction: column;
+        gap: 20px;
+    }
+ 
+    .menu{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+ 
+    .topo h1{
+        font-size: 40px;
+    }
+ 
+}
+ 
+/* RESPONSIVO - CELULAR */
+ 
+@media(max-width:600px){
+ 
+    header{
+        padding:15px 20px;
+    }
+ 
+    nav{
+        padding:15px 20px;
+        border-radius:16px;
+    }
+ 
+    .logo{
+        font-size:26px;
+    }
+ 
+    .topo{
+        padding:45px 20px 30px;
+    }
+ 
+    .topo h1{
+        font-size:28px;
+    }
+ 
+    .badge{
+        padding:10px 18px;
+        font-size:14px;
+    }
+ 
+    .recursos{
+        padding:30px 20px 40px;
+        gap:20px;
+    }
+ 
+    .card{
+        width:100%;
+        padding:28px;
+    }
+ 
+    .cta-final{
+        padding:10px 20px 50px;
+    }
+ 
+    .cta-final p{
+        font-size:17px;
+    }
+ 
+    .popup-conteudo{
+        padding:22px;
+    }
+ 
+}
+</style>
+ 
+</head>
+ 
+<body>
+ 
+<header>
+ 
+<nav>
+ 
+<div class="logo">
+RECURSOS
+</div>
+ 
+<ul class="menu">
+<li><a href="index.html">Início</a></li>
+ 
+<li><a href="plataformas.html">Plataformas</a></li>
+<li><a href="planos.html">Planos</a></li>
+</ul>
+ 
+</nav>
+ 
+</header>
+ 
+<section class="topo">
+ 
+<h1>
+Recursos para <span>automatizar</span><br>
+e aumentar suas vendas
+</h1>
+<div class="badge">
+Quais são os recursos do nosso site?
+</div>
+ 
+<div class="contador-recursos">
+✔ 6 recursos incluídos em todos os planos
+</div>
+ 
+</section>
+ 
+<section class="recursos" id="lista-recursos">
+ 
+<div class="card">
+ 
+<h2><span class="icone-card">📊</span> Dashboard</h2>
+ 
+<p>
+Acompanhe suas vendas, clientes e resultados em tempo real com gráficos modernos e relatórios inteligentes.
+</p>
+ 
+<button onclick="abrirPopup('dashboard')">Saiba Mais</button>
+ 
+</div>
+ 
+<div class="card">
+ 
+<h2><span class="icone-card">🤖</span> Automação</h2>
+ 
+<p>
+Automatize mensagens, pagamentos e processos do seu negócio para ganhar mais tempo e produtividade.
+</p>
+ 
+<button onclick="abrirPopup('automacao')">Saiba Mais</button>
+ 
+</div>
+ 
+<div class="card">
+ 
+<h2><span class="icone-card">🛒</span> HUB de Vendas</h2>
+ 
+<p>
+Integre diferentes plataformas e controle todos os seus pedidos em apenas um único painel.
+</p>
+ 
+<button onclick="abrirPopup('hub')">Saiba Mais</button>
+ 
+</div>
+ 
+<div class="card">
+ 
+<h2><span class="icone-card">📱</span> Responsivo</h2>
+ 
+<p>
+Seu sistema funciona perfeitamente em celular, tablet e computador com design moderno e rápido.
+</p>
+ 
+<button onclick="abrirPopup('responsivo')">Saiba Mais</button>
+ 
+</div>
+ 
+<div class="card">
+ 
+<h2><span class="icone-card">🔒</span> Segurança</h2>
+ 
+<p>
+Proteção avançada para seus dados e informações com tecnologia segura e backups automáticos.
+</p>
+ 
+<button onclick="abrirPopup('seguranca')">Saiba Mais</button>
+ 
+</div>
+ 
+<div class="card">
+ 
+<h2><span class="icone-card">💬</span> Suporte</h2>
+ 
+<p>
+Equipe disponível para ajudar você sempre que precisar com atendimento rápido e eficiente.
+</p>
+ 
+<button onclick="abrirPopup('suporte')">Saiba Mais</button>
+ 
+</div>
+ 
+</section>
+ 
+<section class="cta-final">
+    <p>Pronto para ver isso funcionando no seu negócio?</p>
+    <button onclick="window.location.href='planos.html'">Ver planos</button>
+</section>
+ 
+<div id="popup" class="popup">
+ 
+    <div class="popup-conteudo">
+ 
+        <span class="fechar" onclick="fecharPopup()">&times;</span>
+ 
+        <h2 id="titulo"></h2>
+ 
+        <p id="texto"></p>
+ 
+    </div>
+ 
+</div>
+ 
+<script>
+ 
+function abrirPopup(tipo){
+ 
+    let titulo = document.getElementById("titulo");
+    let texto = document.getElementById("texto");
+ 
+    if(tipo=="dashboard"){
+ 
+        titulo.innerHTML="📊 Dashboard";
+ 
+        texto.innerHTML="Tenha controle total do seu negócio em um único lugar. O Dashboard reúne vendas, faturamento, clientes, pedidos e resultados em tempo real. Com gráficos modernos e relatórios inteligentes você acompanha o desempenho da empresa e toma decisões com muito mais segurança.";
+ 
+    }
+ 
+    if(tipo=="automacao"){
+ 
+        titulo.innerHTML="🤖 Automação";
+ 
+        texto.innerHTML="Automatize tarefas repetitivas como envio de mensagens, emissão de pedidos, pagamentos e notificações. Assim você economiza tempo, reduz erros e pode focar no crescimento do seu negócio.";
+ 
+    }
+ 
+    if(tipo=="hub"){
+ 
+        titulo.innerHTML="🛒 HUB de Vendas";
+ 
+        texto.innerHTML="Conecte diferentes plataformas de venda em um único sistema. Gerencie pedidos, estoque, clientes e vendas sem precisar acessar vários sites diferentes.";
+ 
+    }
+ 
+    if(tipo=="responsivo"){
+ 
+        titulo.innerHTML="📱 Responsivo";
+ 
+        texto.innerHTML="Nosso sistema se adapta automaticamente ao tamanho da tela. Funciona perfeitamente em celulares, tablets, notebooks e computadores, proporcionando uma excelente experiência ao usuário.";
+ 
+    }
+ 
+    if(tipo=="seguranca"){
+ 
+        titulo.innerHTML="🔒 Segurança";
+ 
+        texto.innerHTML="Protegemos seus dados com tecnologias modernas, criptografia, backups automáticos e monitoramento constante para garantir a segurança das informações da sua empresa.";
+ 
+    }
+ 
+    if(tipo=="suporte"){
+ 
+        titulo.innerHTML="💬 Suporte";
+ 
+        texto.innerHTML="Nossa equipe está pronta para ajudar sempre que você precisar. Conte com atendimento rápido, suporte técnico especializado e acompanhamento para resolver dúvidas e problemas.";
+ 
+    }
+ 
+    document.getElementById("popup").style.display="flex";
+}
+ 
+function fecharPopup(){
+    document.getElementById("popup").style.display="none";
+}
+ 
+window.onclick=function(event){
+ 
+    let popup=document.getElementById("popup");
+ 
+    if(event.target==popup){
+        fecharPopup();
+    }
+ 
+}
+ 
+// Animação de entrada em cascata dos cards
+const cardsRecursos = document.querySelectorAll('#lista-recursos .card');
+const observerRecursos = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada, i) => {
+        if(entrada.isIntersecting){
+            setTimeout(() => entrada.target.classList.add('ativo'), i * 80);
+            observerRecursos.unobserve(entrada.target);
+        }
+    });
+}, {threshold:0.15});
+cardsRecursos.forEach(card => observerRecursos.observe(card));
+ 
+</script>
+</body>
+</html>
